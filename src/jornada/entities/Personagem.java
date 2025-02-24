@@ -5,6 +5,12 @@ import java.util.List;
 public abstract class Personagem {
     protected String nome;
     private String raca;
+
+    
+    private float vida = 100;
+
+
+
     // Lista de elementos (objetos) do tipo especificado entre <>
     private List<Habilidade> habilidades = new ArrayList<Habilidade>();
     
@@ -60,6 +66,19 @@ public abstract class Personagem {
     public void setHabilidades(List<Habilidade> habilidades) {
         this.habilidades = habilidades;
     }
+
+    public void levarDano(float dano){
+        // Função que recebe o dano do personagem
+        this.vida = this.vida - dano;
+    }
     
+    public void curar(float cura){
+        vida = vida + cura;
+    }
+
+    public void getVida(){
+        System.out.println("Vida: " + vida);
+    }
+
     public abstract void comer();
 }
