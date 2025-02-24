@@ -1,13 +1,63 @@
 package jornada.controller;
 
+import jornada.entities.Duende;
 import jornada.entities.Habilidade;
 import jornada.entities.Monstro;
-import jornada.entities.Personagem;
+import jornada.entities.Fada;
+
+// import jornada.entities.Personagem;
 
 import java.util.*;
 
+
+
 public class JogoController {
     
+
+	void criarPersonagem(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("-----------------PERSONAGEM--------------------");
+		System.out.println("Selecione a raça do seu personagem: ");
+		System.out.println("1 - Duende");
+		System.out.println("2 - Fada");
+
+		String op  = scanner.nextLine();
+
+		switch (op) {
+			case "1":
+				Duende duende1  = new Duende();
+				System.out.println("Digite o nome do seu personagem: ");
+				String nome = scanner.nextLine();
+				duende1.setNome(nome);
+
+				Habilidade hab1 = new Habilidade();
+				hab1.setNome("Teleporte");
+				hab1.setPoder("Teleportar para vários lugares num raio de 100m");
+
+				System.out.println(nome + " criado com sucesso!");
+				break;
+		
+			case "2":
+				Fada fada1  = new Fada();
+				System.out.println("Digite o nome do seu personagem: ");
+				String nome_fada = scanner.nextLine();
+				fada1.setNome(nome_fada);
+
+				Habilidade hab_fada = new Habilidade();
+				hab_fada.setNome("Animalização");
+				hab_fada.setPoder("Se tranforma em algum animal");
+
+				System.out.println(nome_fada + " criado com sucesso!");
+				
+			default:
+				break;
+		}
+
+	}
+	
+
     public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
@@ -51,11 +101,11 @@ public class JogoController {
 		//Laço principal do programa 
 		while (true) {
 
-			System.out.println("--------------------MENU------------------------------");
+			System.out.println("------------------------MENU------------------------------");
 			System.out.println("1 - Crie o seu usuário");
 			System.out.println("2 - Começar o jogo!");
 			System.out.println("3 - Sair");
-			System.out.println("");
+			System.out.println("----------------------------------------------------------");
 
 			String op  = scanner.nextLine();
 			switch (op) {
