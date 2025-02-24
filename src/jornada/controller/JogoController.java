@@ -37,6 +37,7 @@ public class JogoController {
 				hab1.setPoder("Teleportar para vários lugares num raio de 100m");
 
 				System.out.println(nome + " criado com sucesso!");
+				scanner.close();
 				break;
 		
 			case "2":
@@ -50,9 +51,14 @@ public class JogoController {
 				hab_fada.setPoder("Se tranforma em algum animal");
 
 				System.out.println(nome_fada + " criado com sucesso!");
+				scanner.close();
+
+				
 				
 			default:
 				break;
+			
+			
 		}
 
 	}
