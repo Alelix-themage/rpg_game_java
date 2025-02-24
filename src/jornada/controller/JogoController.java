@@ -14,7 +14,7 @@ import java.util.*;
 public class JogoController {
     
 
-	void criarPersonagem(){
+	static void criarPersonagem(){
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -116,7 +116,7 @@ public class JogoController {
 			String op  = scanner.nextLine();
 			switch (op) {
 				case "1":
-					System.out.println("Teste feito!");
+					criarPersonagem();
 					break;
 				case "2":	
 					
