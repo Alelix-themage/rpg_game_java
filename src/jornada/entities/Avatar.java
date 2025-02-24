@@ -14,3 +14,8 @@ public class Avatar extends Personagem {
     }
     
 }
+
+
+
+// Republicano (Personagem) ->Jedi, Clones, Droids
+// Imperial --> Siths 

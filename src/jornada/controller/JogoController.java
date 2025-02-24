@@ -1,9 +1,13 @@
 package jornada.controller;
 
+import jornada.entities.Comercio;
 import jornada.entities.Duende;
 import jornada.entities.Habilidade;
 import jornada.entities.Monstro;
+import jornada.entities.Personagem;
 import jornada.entities.Fada;
+
+import java.time.Period;
 
 // import jornada.entities.Personagem;
 
@@ -13,7 +17,6 @@ import java.util.*;
 
 public class JogoController {
     
-
 	static void criarPersonagem(){
 
 		Scanner scanner = new Scanner(System.in);
@@ -76,14 +79,7 @@ public class JogoController {
 		habNova2.setNome("danca marcial");
 		habNova2.setPoder("dançar para enganar os inimigos");
 		
-		Habilidade habTeia = new Habilidade();
-		habTeia.setNome("teia");
-		habTeia.setPoder("jogar teia que gruda nos pr�dios");
-			
-		Monstro m1 = new Monstro();
-		m1.setNome("Godzilla");
-		m1.setRaca("lagarto");
-		m1.adicionarHabilidade(habTeia);
+		Comercio taverna = new Comercio();
 		
 		
 		// Personagem p1 = new Personagem();
@@ -108,26 +104,31 @@ public class JogoController {
 		while (true) {
 
 			System.out.println("------------------------MENU------------------------------");
-			System.out.println("1 - Crie o seu usuário");
-			System.out.println("2 - Começar o jogo!");
-			System.out.println("3 - Sair");
+			System.out.println("1 - Crie o seu personagem e comece o jogo!");
+			System.out.println("2 - Sair");
 			System.out.println("----------------------------------------------------------");
 
 			String op  = scanner.nextLine();
 			switch (op) {
 				case "1":
 					criarPersonagem();
-					break;
-				case "2":	
-					
-					break;
-				case "3":
+				
+				
+				case "2":
 					scanner.close();
 					break;
 			
 				default:
 					System.out.println("Por favor selecione um opção válida!");
 			}
+		}
+
+		
+		ArrayList<String> worlds = new ArrayList<>();
+
+		// Loop Main
+		while (true) {
+			
 		}
 
 	}
