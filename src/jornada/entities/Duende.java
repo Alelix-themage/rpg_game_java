@@ -1,5 +1,4 @@
-package com.jornada.entities;
-
+package jornada.entities;
 public class Duende extends Personagem {
     private String pocaoMagica;
 

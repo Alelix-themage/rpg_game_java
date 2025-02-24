@@ -1,5 +1,4 @@
-package com.jornada.entities;
-
+package jornada.entities;
 public class Habilidade {
     private String nome;
     private String poder;

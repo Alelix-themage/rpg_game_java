@@ -1,5 +1,4 @@
-package com.jornada.entities;
-
+package jornada.entities;
 public class Avatar extends Personagem {
     private String genero;
 

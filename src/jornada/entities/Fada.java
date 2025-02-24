@@ -1,5 +1,4 @@
-package com.jornada.entities;
-
+package jornada.entities;
 public class Fada extends Personagem{
     private String varinha;
 

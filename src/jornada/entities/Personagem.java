@@ -1,5 +1,4 @@
-package com.jornada.entities;
-
+package jornada.entities;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +8,8 @@ public abstract class Personagem {
     // Lista de elementos (objetos) do tipo especificado entre <>
     private List<Habilidade> habilidades = new ArrayList<Habilidade>();
     
-    //construtor: 1o.método chamado ao criar um objeto da classe,
-    // ou seja, chamou o 'new' este método é chamado.
+    //construtor: 1o.mï¿½todo chamado ao criar um objeto da classe,
+    // ou seja, chamou o 'new' este mï¿½todo ï¿½ chamado.
     public Personagem(String novoNome, String novoRaca) {
 	nome = novoNome;
 	raca = novoRaca;

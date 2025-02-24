@@ -1,12 +1,11 @@
-package com.jornada.entities;
-
+package jornada.entities;
 public class Monstro extends Personagem{
     
     private String drop;
 
     public void comer() {
 	nome = "";
-	System.out.println("Monstro come com as mãos e com os pés");
+	System.out.println("Monstro come com as mï¿½os e com os pï¿½s");
     }
     public String getDrop() {
         return drop;
