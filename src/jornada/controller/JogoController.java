@@ -3,135 +3,133 @@ package jornada.controller;
 import jornada.entities.Comercio;
 import jornada.entities.Duende;
 import jornada.entities.Habilidade;
-import jornada.entities.Monstro;
-import jornada.entities.Personagem;
 import jornada.entities.Fada;
-
-import java.time.Period;
-
-// import jornada.entities.Personagem;
 
 import java.util.*;
 
-
-
 public class JogoController {
+
+
     
-	static void criarPersonagem(){
+    static void criarPersonagem(Scanner scanner) { 
+        System.out.println("-----------------PERSONAGEM--------------------");
+        System.out.println("Selecione a raça do seu personagem: ");
+        System.out.println("1 - Duende");
+        System.out.println("2 - Fada");
 
-		Scanner scanner = new Scanner(System.in);
+        String op = scanner.nextLine();
 
-		System.out.println("-----------------PERSONAGEM--------------------");
-		System.out.println("Selecione a raça do seu personagem: ");
-		System.out.println("1 - Duende");
-		System.out.println("2 - Fada");
+        switch (op) {
+            case "1":
+                Duende duende1 = new Duende();
+                System.out.println("Digite o nome do seu personagem: ");
+                String nome = scanner.nextLine();
+                duende1.setNome(nome);
 
-		String op  = scanner.nextLine();
+				//Habilidade default
+                Habilidade hab1 = new Habilidade();
+                hab1.setNome("Teleporte");
+                hab1.setPoder("Teleportar para vários lugares num raio de 100m");
 
-		switch (op) {
-			case "1":
-				Duende duende1  = new Duende();
-				System.out.println("Digite o nome do seu personagem: ");
-				String nome = scanner.nextLine();
-				duende1.setNome(nome);
+                System.out.println(nome + " criado com sucesso!");
+                
+            
+            case "2":
+                Fada fada1 = new Fada();
+                System.out.println("Digite o nome do seu personagem: ");
+                String nome_fada = scanner.nextLine();
+                fada1.setNome(nome_fada);
 
-				Habilidade hab1 = new Habilidade();
-				hab1.setNome("Teleporte");
-				hab1.setPoder("Teleportar para vários lugares num raio de 100m");
+				//Habilidade default
+                Habilidade hab_fada = new Habilidade();
+                hab_fada.setNome("Animalização");
+                hab_fada.setPoder("Se transforma em algum animal");
 
-				System.out.println(nome + " criado com sucesso!");
-				scanner.close();
-				break;
-		
-			case "2":
-				Fada fada1  = new Fada();
-				System.out.println("Digite o nome do seu personagem: ");
-				String nome_fada = scanner.nextLine();
-				fada1.setNome(nome_fada);
-
-				Habilidade hab_fada = new Habilidade();
-				hab_fada.setNome("Animalização");
-				hab_fada.setPoder("Se tranforma em algum animal");
-
-				System.out.println(nome_fada + " criado com sucesso!");
-				scanner.close();
-
-				
-				
-			default:
-				break;
-			
-			
-		}
-
-	}
-	
+                System.out.println(nome_fada + " criado com sucesso!");
+                break;  
+            
+            default:
+                System.out.println("Opção inválida! Escolha entre 1 ou 2.");
+        }
+    }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-		Scanner scanner = new Scanner(System.in);
+        System.out.println("-----------------------------------------");
+        System.out.println("Bem-vindo ao RPG DE Guerra nas Estrelas!");
+        System.out.println("-----------------------------------------");
 
-		Habilidade habNova = new Habilidade();
-		habNova.setNome("fogo");
-		habNova.setPoder("atacar inimigos com fogo");
-		
-		Habilidade habNova2 = new Habilidade();
-		habNova2.setNome("danca marcial");
-		habNova2.setPoder("dançar para enganar os inimigos");
-		
-		Comercio taverna = new Comercio();
-		
-		
-		// Personagem p1 = new Personagem();
-		
-		// Personagem p2 = new Personagem("Homem-aranha","hibrido",habTeia);
-		
-		// Personagem p = new Personagem("Hulk","Monstro");
-		// System.out.println(p.getNome());
-		// p.adicionarHabilidade(habNova);
-		// p.adicionarHabilidade(habNova2);
-		
-		
-		// System.out.println(p.getPoderes());
+		//Lista const de planetas do jogo
+        ArrayList<String> worlds = new ArrayList<>(List.of(
+            "Tatooine", "Coruscant", "Naboo", "Hoth", "Endor", 
+            "Mustafar", "Kamino", "Dagobah", "Alderaan", "Geonosis", 
+            "Bespin", "Kashyyyk", "Dantooine", "Jakku"
+        ));
+
+		//embaralhar os mundos
+		Collections.shuffle(worlds);
+
+        // Laço principal do programa
+        boolean rodando = true;
+        while (rodando) {
+            System.out.println("------------------------MENU------------------------------");
+            System.out.println("1 - Criar o seu personagem e comece o jogo!");
+            System.out.println("2 - Sair");
+            System.out.println("----------------------------------------------------------");
+
+            String op = scanner.nextLine();
+            switch (op) {
+                case "1":
+                    criarPersonagem(scanner);
+                    
+
+                case "2":
+                    System.out.println("Obrigado por jogar! Até a próxima.");
+                    rodando = false;
+                    break;
+
+                default:
+                    System.out.println("Por favor, selecione uma opção válida!");
+            }
+        }
 
 
-			
-	
+	//loop principal do jogo
+	 for (int i = 0; i < 3; i++) {
+		//Escolhe aleatoriamente 3 mundos
+            String world = worlds.get(i); 
+            System.out.println("Você chegou em " + world + "!");
+            boolean explorando = true;
+            while (explorando) {
+                System.out.println("O que você deseja fazer em " + world + "?");
+                System.out.println("1 - Explorar");
+                System.out.println("2 - Ir para o próximo mundo");
+                String opcao = scanner.nextLine();
 
-		System.out.println("Bem vindo ao jogo épico!");
+                switch (opcao) {
+                    case "1":
+                        System.out.println("Explorando " + world + "...");
+                        // E	xploração e combate
+                        break;
+                    case "2":
+                        System.out.println("Partindo para o próximo mundo...");
+                        explorando = false;
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                }
+            }
+        }
+        System.out.println("Você explorou 3 mundos!");
 
-		//Laço principal do programa 
-		while (true) {
+		//passar os mundos de forma aleatória!
+		// cada mundo terá 5 Sith's
+		// sendo uma mais forte que o outro e com mais vida
 
-			System.out.println("------------------------MENU------------------------------");
-			System.out.println("1 - Crie o seu personagem e comece o jogo!");
-			System.out.println("2 - Sair");
-			System.out.println("----------------------------------------------------------");
 
-			String op  = scanner.nextLine();
-			switch (op) {
-				case "1":
-					criarPersonagem();
-				
-				
-				case "2":
-					scanner.close();
-					break;
-			
-				default:
-					System.out.println("Por favor selecione um opção válida!");
-			}
-		}
-
-		
-		ArrayList<String> worlds = new ArrayList<>();
-
-		// Loop Main
-		while (true) {
-			
-		}
-
-	}
-
+		scanner.close(); 
+    
+    }
 
 }
