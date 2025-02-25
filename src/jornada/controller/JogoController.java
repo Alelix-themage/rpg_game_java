@@ -164,6 +164,7 @@ public class JogoController {
 
 
 		scanner.close(); 
+        System.out.println(ANSI_RESET);
     
     }
 
