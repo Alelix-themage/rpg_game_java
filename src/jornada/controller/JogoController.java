@@ -70,6 +70,21 @@ public class JogoController {
 		//embaralhar os mundos
 		Collections.shuffle(worlds);
 
+
+        String asciiArt = """
+                             _______.___________.    ___      .______         ____    __    ____  ___      .______          _______.
+                            /       |           |   /   \\     |   _  \\        \\   \\  /  \\  /   / /   \\     |   _  \\        /       |
+                           |   (----`---|  |----`  /  ^  \\    |  |_)  |        \\   \\/    \\/   / /  ^  \\    |  |_)  |      |   (----`
+                            \\   \\       |  |      /  /_\\  \\   |      /          \\            / /  /_\\  \\   |      /        \\   \\    
+                        .----)   |      |  |     /  _____  \\  |  |\\  \\----.      \\    /\\    / /  _____  \\  |  |\\  \\----.----)   |   
+                        |_______/       |__|    /__/     \\__\\ | _| `._____|       \\__/  \\__/ /__/     \\__\\ | _| `._____|_______/    
+                                                                                                                    
+                        """;
+        
+        System.out.println(asciiArt);
+            
+        
+        
         // Laço principal do programa
         boolean rodando = true;
         while (rodando) {
