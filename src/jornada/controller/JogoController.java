@@ -114,6 +114,7 @@ public class JogoController {
                 default:
                     System.out.println("Por favor, selecione uma opção válida!");
             }
+            break;   
         }
 
 
