@@ -4,12 +4,21 @@ import jornada.entities.Comercio;
 import jornada.entities.Duende;
 import jornada.entities.Habilidade;
 import jornada.entities.Fada;
+import jornada.artAscii.ArtAscii;
 
 import java.util.*;
 
+
+
 public class JogoController {
 
+    //background
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_RESET = "\u001B[37m";
 
+  
     
     static void criarPersonagem(Scanner scanner) { 
         System.out.println("-----------------PERSONAGEM--------------------");
@@ -32,6 +41,7 @@ public class JogoController {
                 hab1.setPoder("Teleportar para vários lugares num raio de 100m");
 
                 System.out.println(nome + " criado com sucesso!");
+                break;
                 
             
             case "2":
@@ -71,19 +81,16 @@ public class JogoController {
 		Collections.shuffle(worlds);
 
 
-        String asciiArt = """
-                             _______.___________.    ___      .______         ____    __    ____  ___      .______          _______.
-                            /       |           |   /   \\     |   _  \\        \\   \\  /  \\  /   / /   \\     |   _  \\        /       |
-                           |   (----`---|  |----`  /  ^  \\    |  |_)  |        \\   \\/    \\/   / /  ^  \\    |  |_)  |      |   (----`
-                            \\   \\       |  |      /  /_\\  \\   |      /          \\            / /  /_\\  \\   |      /        \\   \\    
-                        .----)   |      |  |     /  _____  \\  |  |\\  \\----.      \\    /\\    / /  _____  \\  |  |\\  \\----.----)   |   
-                        |_______/       |__|    /__/     \\__\\ | _| `._____|       \\__/  \\__/ /__/     \\__\\ | _| `._____|_______/    
-                                                                                                                    
-                        """;
         
-        System.out.println(asciiArt);
-            
+        System.out.println(ANSI_YELLOW + ArtAscii.asciiArt);
+
+
+
+        System.out.println( ANSI_GREEN + ArtAscii.naveAscii);
+
         
+     
+
         
         // Laço principal do programa
         boolean rodando = true;
@@ -129,6 +136,7 @@ public class JogoController {
                         break;
                     case "2":
                         System.out.println("Partindo para o próximo mundo...");
+                        System.out.println(ArtAscii.planetAscii);
                         explorando = false;
                         break;
                     default:
