@@ -92,7 +92,7 @@ public class JogoController {
      
 
         
-        // Laço principal do programa
+        // Laço do Menu do programa
         boolean rodando = true;
         while (rodando) {
             System.out.println("------------------------MENU------------------------------");
@@ -104,7 +104,7 @@ public class JogoController {
             switch (op) {
                 case "1":
                     criarPersonagem(scanner);
-                    
+                    break;
 
                 case "2":
                     System.out.println("Obrigado por jogar! Até a próxima.");
@@ -119,6 +119,10 @@ public class JogoController {
 
 	//loop principal do jogo
 	 for (int i = 0; i < 3; i++) {
+
+        //Criação da Taverna
+        Comercio taverna = new Comercio();
+
 		//Escolhe aleatoriamente 3 mundos
             String world = worlds.get(i); 
             System.out.println("Você chegou em " + world + "!");
@@ -127,16 +131,23 @@ public class JogoController {
                 System.out.println("O que você deseja fazer em " + world + "?");
                 System.out.println("1 - Explorar");
                 System.out.println("2 - Ir para o próximo mundo");
+                System.out.println("3 - Adquirir Habilidade na Taverna");
                 String opcao = scanner.nextLine();
 
                 switch (opcao) {
                     case "1":
                         System.out.println("Explorando " + world + "...");
-                        // E	xploração e combate
+                        // Exploração e combate
                         break;
                     case "2":
                         System.out.println("Partindo para o próximo mundo...");
                         System.out.println(ArtAscii.planetAscii);
+                        explorando = false;
+                        break;
+                    case "3":
+                        System.out.println("Entrando na Taverna...");
+                        float coin = 5;
+                        taverna.comprarVida(coin);
                         explorando = false;
                         break;
                     default:
