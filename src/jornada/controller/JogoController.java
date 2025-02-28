@@ -4,7 +4,8 @@ import jornada.entities.Comercio;
 import jornada.entities.Duende;
 import jornada.entities.Habilidade;
 import jornada.entities.Fada;
-import jornada.entities.Personagem; // Importação necessária
+import jornada.entities.Personagem;
+import jornada.entities.Sith;
 import jornada.artAscii.ArtAscii;
 
 import java.util.*;
@@ -66,6 +67,11 @@ public class JogoController {
             }
         }
         return personagem;
+    }
+
+    static public Personagem criarSith(){
+       //Função responsável por criar os boss
+        return null;
     }
 
     public static void main(String[] args) {
