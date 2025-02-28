@@ -4,11 +4,10 @@ import jornada.entities.Comercio;
 import jornada.entities.Duende;
 import jornada.entities.Habilidade;
 import jornada.entities.Fada;
+import jornada.entities.Personagem; // Importação necessária
 import jornada.artAscii.ArtAscii;
 
 import java.util.*;
-
-
 
 public class JogoController {
 
@@ -18,49 +17,55 @@ public class JogoController {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[37m";
 
-  
-    
-    static void criarPersonagem(Scanner scanner) { 
+    static Personagem criarPersonagem(Scanner scanner) { 
+        //Método responsável por criar o personagem
+
         System.out.println("-----------------PERSONAGEM--------------------");
         System.out.println("Selecione a raça do seu personagem: ");
         System.out.println("1 - Duende");
         System.out.println("2 - Fada");
 
-        String op = scanner.nextLine();
+        Personagem personagem = null;
 
-        switch (op) {
-            case "1":
-                Duende duende1 = new Duende();
-                System.out.println("Digite o nome do seu personagem: ");
-                String nome = scanner.nextLine();
-                duende1.setNome(nome);
+        while (personagem == null) {
+            String op = scanner.nextLine();
 
-				//Habilidade default
-                Habilidade hab1 = new Habilidade();
-                hab1.setNome("Teleporte");
-                hab1.setPoder("Teleportar para vários lugares num raio de 100m");
+            switch (op) {
+                case "1":
+                    Duende duende = new Duende();
+                    System.out.println("Digite o nome do seu personagem: ");
+                    duende.setNome(scanner.nextLine());
 
-                System.out.println(nome + " criado com sucesso!");
-                break;
-                
-            
-            case "2":
-                Fada fada1 = new Fada();
-                System.out.println("Digite o nome do seu personagem: ");
-                String nome_fada = scanner.nextLine();
-                fada1.setNome(nome_fada);
+                    // Habilidade default
+                    Habilidade habDuende = new Habilidade();
+                    habDuende.setNome("Teleporte");
+                    habDuende.setPoder("Teleportar para vários lugares num raio de 100m");
+                    duende.adicionarHabilidade(habDuende);
 
-				//Habilidade default
-                Habilidade hab_fada = new Habilidade();
-                hab_fada.setNome("Animalização");
-                hab_fada.setPoder("Se transforma em algum animal");
+                    System.out.println(duende.getNome() + " criado com sucesso!");
+                    personagem = duende;
+                    break;
 
-                System.out.println(nome_fada + " criado com sucesso!");
-                break;  
-            
-            default:
-                System.out.println("Opção inválida! Escolha entre 1 ou 2.");
+                case "2":
+                    Fada fada = new Fada();
+                    System.out.println("Digite o nome do seu personagem: ");
+                    fada.setNome(scanner.nextLine());
+
+                    // Habilidade default
+                    Habilidade habFada = new Habilidade();
+                    habFada.setNome("Animalização");
+                    habFada.setPoder("Se transforma em algum animal");
+                    fada.adicionarHabilidade(habFada);
+
+                    System.out.println(fada.getNome() + " criada com sucesso!");
+                    personagem = fada;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Escolha entre 1 ou 2.");
+            }
         }
+        return personagem;
     }
 
     public static void main(String[] args) {
@@ -70,64 +75,59 @@ public class JogoController {
         System.out.println("Bem-vindo ao RPG DE Guerra nas Estrelas!");
         System.out.println("-----------------------------------------");
 
-		//Lista const de planetas do jogo
+        // Lista const de planetas do jogo
         ArrayList<String> worlds = new ArrayList<>(List.of(
             "Tatooine", "Coruscant", "Naboo", "Hoth", "Endor", 
             "Mustafar", "Kamino", "Dagobah", "Alderaan", "Geonosis", 
             "Bespin", "Kashyyyk", "Dantooine", "Jakku"
         ));
 
-		//embaralhar os mundos
-		Collections.shuffle(worlds);
+        // Embaralhar os mundos
+        Collections.shuffle(worlds);
 
-
-        
         System.out.println(ANSI_YELLOW + ArtAscii.asciiArt);
+        System.out.println(ANSI_GREEN + ArtAscii.naveAscii);
 
-
-
-        System.out.println( ANSI_GREEN + ArtAscii.naveAscii);
-
-        
-     
-
-        
         // Laço do Menu do programa
+        Personagem personagem = null;
         boolean rodando = true;
+
         while (rodando) {
             System.out.println("------------------------MENU------------------------------");
-            System.out.println("1 - Criar o seu personagem e comece o jogo!");
+            System.out.println("1 - Criar o seu personagem e começar o jogo!");
             System.out.println("2 - Sair");
             System.out.println("----------------------------------------------------------");
 
             String op = scanner.nextLine();
             switch (op) {
                 case "1":
-                    criarPersonagem(scanner);
+                    personagem = criarPersonagem(scanner);
+                    rodando = false; // Sai do menu após criar personagem
                     break;
 
                 case "2":
                     System.out.println("Obrigado por jogar! Até a próxima.");
-                    rodando = false;
-                    break;
+                    scanner.close();
+                    return; // Encerra o jogo
 
                 default:
                     System.out.println("Por favor, selecione uma opção válida!");
             }
-            break;   
         }
 
+        // Loop principal do jogo
+        System.out.println("===============================================================");
+        System.out.println("Agora sua jornada começa, " + personagem.getNome() + "!");
+        for (int i = 0; i < 3; i++) {
+            // Criação da Taverna
+            Comercio taverna = new Comercio();
 
-	//loop principal do jogo
-	 for (int i = 0; i < 3; i++) {
-
-        //Criação da Taverna
-        Comercio taverna = new Comercio();
-
-		//Escolhe aleatoriamente 3 mundos
-            String world = worlds.get(i); 
+            // Escolhe aleatoriamente 3 mundos
+            String world = worlds.get(i);
+            System.out.println("=================================================================");
             System.out.println("Você chegou em " + world + "!");
             boolean explorando = true;
+            
             while (explorando) {
                 System.out.println("O que você deseja fazer em " + world + "?");
                 System.out.println("1 - Explorar");
@@ -137,35 +137,34 @@ public class JogoController {
 
                 switch (opcao) {
                     case "1":
-                        System.out.println("Explorando " + world + "...");
-                        // Exploração e combate
+                        System.out.println(personagem.getNome() + " está explorando " + world + "...");
+                        // Lógica de exploração e combate
                         break;
                     case "2":
+                        System.out.println("======================================================");
                         System.out.println("Partindo para o próximo mundo...");
                         System.out.println(ArtAscii.planetAscii);
                         explorando = false;
                         break;
                     case "3":
+
+                        System.out.println("======================================================");
                         System.out.println("Entrando na Taverna...");
                         float coin = 5;
-                        taverna.comprarVida(coin);
-                        explorando = false;
+                        float pocao = taverna.comprarVida(coin);
+
+                        personagem.curar(pocao);
+                        personagem.getVida();
+
                         break;
                     default:
                         System.out.println("Opção inválida.");
                 }
             }
         }
+
         System.out.println("Você explorou 3 mundos!");
-
-		//passar os mundos de forma aleatória!
-		// cada mundo terá 5 Sith's
-		// sendo uma mais forte que o outro e com mais vida
-
-
-		scanner.close(); 
+        scanner.close();
         System.out.println(ANSI_RESET);
-    
     }
-
 }
