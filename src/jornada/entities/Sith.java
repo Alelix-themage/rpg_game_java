@@ -5,14 +5,12 @@ public class Sith extends Personagem{
     private String nome;
     private String raca;
     private int forca;
-    private String democracia = "Imperio";
-    private int vida;
+
 
     public Sith(String novoNome, String novaRaca) {
         this.nome = novoNome;
         this.raca = novaRaca;
         this.forca = 5;
-        this.vida = 100;
     }
 
     public void atirar(){
