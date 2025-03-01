@@ -1,7 +1,7 @@
 package jornada.controller;
 
 import jornada.entities.Comercio;
-import jornada.entities.Duende;
+import jornada.entities.Droids;
 import jornada.entities.Habilidade;
 import jornada.entities.Fada;
 import jornada.artAscii.ArtAscii;

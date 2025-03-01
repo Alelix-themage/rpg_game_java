@@ -39,11 +39,12 @@ public class Clone extends Personagem {
         this.democracia = democracia;
     }
 
-    public int getVida(){
-        return vida;
-    }
     public void setVida(int vida){
         this.vida = vida;
+    }
+
+    public void getVida(){
+        System.out.println("Vida: " + vida);
     }
 
 }
