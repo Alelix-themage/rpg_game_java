@@ -10,6 +10,8 @@ import jornada.artAscii.ArtAscii;
 
 import java.util.*;
 
+import javax.print.DocFlavor.STRING;
+
 public class JogoController {
 
     //TEXT COLOR
@@ -23,7 +25,7 @@ public class JogoController {
 
         System.out.println("-----------------PERSONAGEM--------------------");
         System.out.println("Selecione a raça do seu personagem: ");
-        System.out.println("1 - Duende");
+        System.out.println("1 - Droid");
         System.out.println("2 - Fada");
 
         Personagem personagem = null;
@@ -33,18 +35,18 @@ public class JogoController {
 
             switch (op) {
                 case "1":
-                    Droids duende = new Droids();
+                    Droids droid = new Droids();
                     System.out.println("Digite o nome do seu personagem: ");
-                    duende.setNome(scanner.nextLine());
+                    droid.setNome(scanner.nextLine());
 
                     // Habilidade default
-                    Habilidade habDuende = new Habilidade();
-                    habDuende.setNome("Teleporte");
-                    habDuende.setPoder("Teleportar para vários lugares num raio de 100m");
-                    duende.adicionarHabilidade(habDuende);
+                    Habilidade habdroid = new Habilidade();
+                    habdroid.setNome("Teleporte");
+                    habdroid.setPoder("Teleportar para vários lugares num raio de 100m");
+                    droid.adicionarHabilidade(habdroid);
 
-                    System.out.println(duende.getNome() + " criado com sucesso!");
-                    personagem = duende;
+                    System.out.println(droid.getNome() + " criado com sucesso!");
+                    personagem = droid;
                     break;
 
                 case "2":
@@ -71,7 +73,22 @@ public class JogoController {
 
     static public Personagem criarSith(){
        //Função responsável por criar os boss
-        return null;
+        
+       //Lista de Sith's
+        ArrayList<String> siths = new ArrayList<>(
+            List.of(
+                "Darth Sidious","Darth Vader","Darth Maul","Darth Tyranus", // Conde Dookan
+                "Darth Plagueis","Darth Revan","Darth Bane","Darth Nihilus",
+                "Darth Malak","Darth Krayt"
+        ));
+
+    
+       // Escolher um nome aleatório
+       Random random = new Random();
+       String nomeSith = siths.get(random.nextInt(siths.size()));
+
+       // Criar e retornar um novo Sith com o nome escolhido
+       return new Sith(nomeSith);
     }
 
     public static void main(String[] args) {
@@ -145,6 +162,11 @@ public class JogoController {
                     case "1":
                         System.out.println(personagem.getNome() + " está explorando " + world + "...");
                         // Lógica de exploração e combate
+                        Personagem novoSith = criarSith();
+                        String nomeSith = novoSith.getNome();
+                        System.out.println("-----------------------------------------------");
+                        System.out.println("Oh não! " + nomeSith + " acaba de aparecer para acabar com a República!");
+
                         break;
                     case "2":
                         System.out.println("======================================================");
@@ -174,3 +196,6 @@ public class JogoController {
         System.out.println(ANSI_RESET);
     }
 }
+
+
+//moeda ->quando matar um Sith

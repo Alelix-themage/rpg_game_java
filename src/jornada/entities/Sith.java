@@ -7,9 +7,8 @@ public class Sith extends Personagem{
     private int forca;
 
 
-    public Sith(String novoNome, String novaRaca) {
+    public Sith(String novoNome) {
         this.nome = novoNome;
-        this.raca = novaRaca;
         this.forca = 5;
     }
 
@@ -50,22 +49,6 @@ public class Sith extends Personagem{
 
     public void setForca(int forca){
         this.forca = forca;
-    }
-
-    public String getDemocracia(){
-        return democracia;
-
-    }
-    public void setDemocracia(String democracia){
-        this.democracia = democracia;
-    }
-
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-
-    public void getVida(){
-        System.out.println("Vida: " + vida);
     }
 
 }
