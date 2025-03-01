@@ -33,7 +33,7 @@ public class JogoController {
 
             switch (op) {
                 case "1":
-                    Duende duende = new Duende();
+                    Droids duende = new Droids();
                     System.out.println("Digite o nome do seu personagem: ");
                     duende.setNome(scanner.nextLine());
 

@@ -5,7 +5,6 @@ public class Droids extends Personagem {
 
 
    private String nome;
-   private int vida = 50;
    private String genero;
 
     public String getNome(){
@@ -16,17 +15,6 @@ public class Droids extends Personagem {
         this.nome = nome;
 
     }
-    public int getVida(){
-        return vida;
-    }
-
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-
-    public void exibirVida(){
-        System.out.println("Vida: " + vida);
-    }
 
     public String getGenero(){
         return genero;
@@ -35,4 +23,11 @@ public class Droids extends Personagem {
     public void setGenero(String genero){
         this.genero = genero;
     }
+
+    // Implementação do método abstrato comer()
+    @Override
+    public void comer() {
+        System.out.println(nome + " está comendo um suplemento energético!");
+    }   
+
 }
