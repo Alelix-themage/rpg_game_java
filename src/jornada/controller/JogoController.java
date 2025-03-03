@@ -86,10 +86,11 @@ public class JogoController {
     
        // Escolher um nome aleatório
        Random random = new Random();
-       String nomeSith = siths.get(random.nextInt(siths.size()));
+       String sith = siths.get(random.nextInt(siths.size()));
+
 
        // Criar e retornar um novo Sith com o nome escolhido
-       return new Sith(nomeSith);
+       return new Sith(sith);
     }
 
 
@@ -103,6 +104,8 @@ public class JogoController {
         System.out.println(sith.getNome() + " sacou o sabre de luz! Se prepare!");
 
         boolean flag = true;
+
+
         while(flag){
             //Loop da batalha
             
@@ -114,13 +117,15 @@ public class JogoController {
             String op = scanner.nextLine();
 
             switch(op){
+                
+                
+
+
                 case "1":
-                    float vida_sith = sith.getVida();
 
                     //força do personagem
                     float dano_per = per1.getForca();
-                    //vida do Perosnagem 
-                    float vida_per = per1.getVida();
+     
 
                     //força do Sith
                     float dano_sith = sith.getForca();
@@ -129,30 +134,32 @@ public class JogoController {
 
                     System.out.println("----------------------------------------------------------------");
                     System.out.println(sith.getNome() + " recebeu " + dano_per + " de dano!");
-                    System.out.println( sith.getNome() + "                         VIDA: " + vida_sith);
+                    System.out.println( sith.getNome() + "                         VIDA: " + sith.getVida());
                     System.out.println("----------------------------------------------------------------");
 
-                    if(vida_sith <= 0){
+                    if(sith.getVida() <= 0){
                         // Verifica se o Sith morreu
                         System.out.println("-------------------------------------------------------------------------");
                         System.out.println("Você irá viver por mais um dia! Acaba de derrotar o Sith, meus parabéns!!");
+
+                        per1.upLevel(1.5f);
 
                         System.out.println(ANSI_GREEN);
                         return 5.0f;
                     }
 
                     else {
-                        System.out.println( per1.getNome() + "                         VIDA: " + vida_per);
+                        System.out.println( per1.getNome() + "                         VIDA: " + per1.getVida());
                         System.out.println("Se prepare para o conta ataque do " + sith.getNome());
 
                         per1.levarDano(dano_sith);
 
                         System.out.println("----------------------------------------------------------------");
                         System.out.println(per1.getNome() + " recebeu " + dano_per + " de dano!");
-                        System.out.println( per1.getNome() + "                         VIDA: " + vida_per);
+                        System.out.println( per1.getNome() + "                         VIDA: " + per1.getVida());
                         System.out.println("----------------------------------------------------------------");
 
-                        if(vida_per <= 0){
+                        if(per1.getVida() <= 0){
                             System.out.println("----------------------------------------------------------------");
                             System.out.println("Os rebeldes acabam de perder um grande guerreiro! Você morreu!");
                             return 0;
@@ -163,9 +170,42 @@ public class JogoController {
 
                 
                 case "2":
-                    
-                    flag = false;
-                   break;
+
+                    dano_sith = sith.getForca();
+            
+                    Random rand = new Random();
+
+                    //Implementa uma lógica randomica que se o resto for 0 o personagem consegue fugir
+                    // Se não, ele leva dano
+
+                    float n = rand.nextInt(100);
+
+                    n = n * 0.5f;
+
+                    float result = n % 2;
+                    System.out.println("Numero teste: " + Float.toString(n));
+
+                    if(result == 0){
+                        System.out.println("----------------------------------------------------------------");
+                        System.out.println("Você conseguiu fugir do " + sith.getNome() + " , mas não se anime! Ele pode voltar!");
+                        
+                        return 0.0f;
+                    }
+
+                   else {
+                        System.out.println( per1.getNome() + "                         VIDA: " + per1.getVida());
+                        System.out.println("Se prepare para o conta ataque do " + sith.getNome());
+
+                        per1.levarDano(dano_sith);
+
+                        System.out.println("----------------------------------------------------------------");
+                        System.out.println(per1.getNome() + " recebeu " + dano_sith + " de dano!");
+                        System.out.println( per1.getNome() + "                         VIDA: " + per1.getVida());
+                        System.out.println("----------------------------------------------------------------");
+
+                        break;
+                    } 
+                   
 
                 default:
                     System.out.println("Por favor, selecione uma opção existente!");
@@ -254,12 +294,15 @@ public class JogoController {
                         System.out.println(personagem.getNome() + " está explorando " + world + "...");
                         // Lógica de exploração e combate
                         Personagem novoSith = criarSith();
+                        //A cada loop aumenta a força do Sith
+                        novoSith.upLevel(1.3f);
                         String nomeSith = novoSith.getNome();
                         System.out.println("--------------------------------------------------------------------------");
                         System.out.println("Oh não! " + nomeSith + " acaba de aparecer para acabar com a República!");
                         System.out.println("--------------------------------------------------------------------------");
                         System.out.println("Se prepare para a luta!");
                         float coin = batalha(personagem, novoSith);
+                        novoSith = null;
                         personagem.setCoin(coin);
 
                         
@@ -275,7 +318,7 @@ public class JogoController {
 
                         System.out.println("======================================================");
                         System.out.println("Entrando na Taverna...");
-                        float pocao = taverna.comprarVida(personagem.getCoin());
+                        float pocao = taverna.comprarVida(personagem.buyTaverna());
 
                         personagem.curar(pocao);
                         personagem.getVida();

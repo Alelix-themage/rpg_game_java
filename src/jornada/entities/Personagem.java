@@ -94,8 +94,13 @@ public abstract class Personagem {
     }
 
     public float getCoin(){
+        //Retorna Créditos Imperiais
+        return bolsa;
+    }
+
+    public float buyTaverna(){
         //Retorna Créditos Imperiais para ser usado na Taverna
-        if(this.bolsa <= 5.0){
+        if(this.bolsa < 5.0){
             System.out.println("Você não possui créditos imperiais o suficiente!");
             return 0.0f;
         }
@@ -110,6 +115,19 @@ public abstract class Personagem {
     public float getForca(){
         //Retorna a força para ser utilizada na batalha
         return forca;
+    }
+
+
+    public void upLevel(float constant){
+
+        forca = forca * constant;
+
+        System.out.println("================================================================");
+        System.out.println("Meus parabéns " + getNome() + " seu level foi aumentado com sucesso!");
+        System.out.println("Que a força esteja com você!");
+        System.out.println(getNome() + "                                    FORÇA: " + getForca());
+
+
     }
 
     public abstract void comer();
