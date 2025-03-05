@@ -52,21 +52,7 @@ public class Sith extends Personagem{
         this.forca = forca;
     }
 
-    public String getDemocracia(){
-        return democracia;
 
-    }
-    public void setDemocracia(String democracia){
-        this.democracia = democracia;
-    }
-
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-
-    public void getVida(){
-        System.out.println("Vida: " + vida);
-    }
 
 }
 
