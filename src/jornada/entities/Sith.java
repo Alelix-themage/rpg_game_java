@@ -4,13 +4,16 @@ public class Sith extends Personagem{
     private String drop;
     private String nome;
     private String raca;
-    private int forca;
+    private float forca;
 
 
-    public Sith(String novoNome, String novaRaca) {
+    public Sith(String novoNome) {
         this.nome = novoNome;
-        this.raca = novaRaca;
-        this.forca = 5;
+        this.forca = 15;
+
+        //Sith inicia a vida com 50
+        this.vida = this.vida - 50.0f;
+
     }
 
     public void atirar(){
@@ -44,16 +47,12 @@ public class Sith extends Personagem{
         this.raca = raca;
     }
     
-    public int getForca(){
+    public float getForca(){
         return forca;
     }
 
-    public void setForca(int forca){
+    public void setForca(float forca){
         this.forca = forca;
     }
 
-
-
-}
-
-
+  

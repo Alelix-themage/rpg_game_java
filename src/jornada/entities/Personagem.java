@@ -6,8 +6,14 @@ public abstract class Personagem {
     protected String nome;
     private String raca;
 
-    
-    private float vida = 100;
+
+    //variável força para teste
+    protected float forca = 30;
+
+   //Bolsa de moedas 
+    float bolsa  = 0;
+
+    protected float vida = 100;
 
 
 
@@ -76,8 +82,52 @@ public abstract class Personagem {
         vida = vida + cura;
     }
 
-    public void getVida(){
-        System.out.println("Vida: " + vida);
+    public float getVida(){
+        return vida;
+    }
+
+    public void setCoin(float coin){
+        //Recebe dinheiro pela batalha
+        this.bolsa = coin;
+
+        System.out.println("Parabéns! Você acaba de receber " + coin + " créditos imperiais pela batalha!");
+    }
+
+    public float getCoin(){
+        //Retorna Créditos Imperiais
+        return bolsa;
+    }
+
+    public float buyTaverna(){
+        //Retorna Créditos Imperiais para ser usado na Taverna
+        if(this.bolsa < 5.0){
+            System.out.println("Você não possui créditos imperiais o suficiente!");
+            return 0.0f;
+        }
+
+        else {
+            this.bolsa = this.bolsa - 5;
+            float coin = 5.0f;
+            return coin;
+        }
+    }
+
+    public float getForca(){
+        //Retorna a força para ser utilizada na batalha
+        return forca;
+    }
+
+
+    public void upLevel(float constant){
+
+        forca = forca * constant;
+
+        System.out.println("================================================================");
+        System.out.println("Meus parabéns " + getNome() + " seu level foi aumentado com sucesso!");
+        System.out.println("Que a força esteja com você!");
+        System.out.println(getNome() + "                                    FORÇA: " + getForca());
+
+
     }
 
     public abstract void comer();
