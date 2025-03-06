@@ -3,6 +3,8 @@ public class Jedi extends Personagem{
     private String nome;
     private String genero;
     private float forca;
+
+    private boolean democracia = true;
     
     public Jedi() {
         this.nome = "--";

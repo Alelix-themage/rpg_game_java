@@ -6,6 +6,8 @@ public class Sith extends Personagem{
     private String raca;
     private float forca;
 
+    private boolean democracia = false;
+
     public Sith() {
         this.nome = "--";
         this.raca = "--";
