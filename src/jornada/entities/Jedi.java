@@ -4,6 +4,12 @@ public class Jedi extends Personagem{
     private String genero;
     private float forca;
     
+    public Jedi() {
+        this.nome = "--";
+        this.genero = "--";
+        this.forca = 10;
+        this.vida = 100;
+    }
     public Jedi(String novoNome, String novoGenero) {
         this.nome = novoNome;
         this.genero = novoGenero;

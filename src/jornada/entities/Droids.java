@@ -1,19 +1,22 @@
 package jornada.entities;
 public class Droids extends Personagem {
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 577805467b5dfa71b1576476914bcf9eda935180
    private String nome;
    private String genero;
-   private int choque = 50;
+   private float choque = 50;
 
+
+
+   public Droids() {
+       this.nome = "--";
+       this.genero = "--";
+       this.vida = 100;
+       this.choque = 50;
+   }
    public Droids(String novoNome, String novoGenero) {
        this.nome = novoNome;
        this.genero = novoGenero;
+       this.vida = 100;
+       this.choque = 50;
        
     }
 
@@ -43,7 +46,7 @@ public class Droids extends Personagem {
 
     //choque para ataque
 
-    public int getchoque(){
+    public float getchoque(){
         return choque;
     }
 
