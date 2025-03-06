@@ -4,9 +4,22 @@ public class Clone extends Personagem {
 
     private String patente;
     private String nome;
-    private String democracia = "Imperio";
-    private int vida = 75;    
+    private float blasters = 50;
+        
+    public Clone() {
+        this.nome = "--";
+        this.genero = "--";
+        this.vida = 100;
+        this.blasters = 50;
 
+    }
+
+    public Clone(String novoNome, String novoGenero, int vida) {
+        this.nome = novoNome;
+        this.genero = novoGenero;
+        this.vida = 100;
+        this.blasters = 50;
+    }
     public void comer() {
 	System.out.println("gosta somente de alimentos industrializados");
     }
@@ -32,24 +45,23 @@ public class Clone extends Personagem {
         this.nome = nome;
     }
 
-    public String getDemocracia(){
-        return democracia;
-    }
-    public void setDemocracia(String democracia){
-        this.democracia = democracia;
+    public float getVida(){
+        return vida;
     }
 
-    public void setVida(int vida){
+    public void setVida(float vida){
         this.vida = vida;
     }
 
-    public void getVida(){
-        System.out.println("Vida: " + vida);
+    public float getBlasters(){
+        return blasters;
+    }
+    public void setBlasters(float blasters){
+        this.blasters = blasters;
     }
 
+
 }
-
-
 
 // Republicano (Personagem) ->Jedi, Clones, Droids
 // Imperial --> Siths 

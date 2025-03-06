@@ -1,15 +1,46 @@
 package jornada.entities;
-public class Fada extends Personagem{
-    private String varinha;
-
+public class Jedi extends Personagem{
+    private String nome;
+    private String genero;
+    private float forca;
+    
+    public Jedi(String novoNome, String novoGenero) {
+        this.nome = novoNome;
+        this.genero = novoGenero;
+        this.forca = 10;
+        this.vida = 100;
+    }
     public void comer() {
-	System.out.println("transforma pedra em comida");
+	System.out.println(nome + "comeu uma barra de cereal");
     }
-    public String getVarinha() {
-        return varinha;
+    
+    public String getNome(){
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
-    public void setVarinha(String varinha) {
-        this.varinha = varinha;
+    public String getGenero(){
+        return genero;
+    }
+
+    public void setGenero(String genero){
+        this.genero = genero;
+    }
+    
+    public float getForca(){
+        return forca;
+    }
+
+    public void setForca(int forca){
+        this.forca = forca;
+    }
+
+    public float getVida(){
+        return vida;
+    }
+    public void setVida(float vida){
+        this.vida = vida;
     }
 }

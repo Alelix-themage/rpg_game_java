@@ -1,7 +1,4 @@
 package jornada.entities;
-
-
-
 public class Comercio   {
     // variável que armazena o ganho do comércio
     private float arrecadacao = 0;

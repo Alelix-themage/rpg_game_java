@@ -50,9 +50,9 @@ public class Sith extends Personagem{
     public float getForca(){
         return forca;
     }
-
+    
     public void setForca(float forca){
         this.forca = forca;
     }
-
+}
   
