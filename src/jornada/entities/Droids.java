@@ -1,5 +1,12 @@
 package jornada.entities;
 public class Droids extends Personagem {
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 577805467b5dfa71b1576476914bcf9eda935180
    private String nome;
    private String genero;
    private int choque = 50;

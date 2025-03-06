@@ -4,6 +4,7 @@ public class Clone extends Personagem {
 
     private String patente;
     private String nome;
+<<<<<<< HEAD
     private float blasters = 50;
         
     public Clone() {
@@ -20,6 +21,13 @@ public class Clone extends Personagem {
         this.vida = 100;
         this.blasters = 50;
     }
+=======
+   
+    
+    //Star Wars Episode III
+    private boolean democracia = true;
+    
+>>>>>>> 577805467b5dfa71b1576476914bcf9eda935180
     public void comer() {
 	System.out.println("gosta somente de alimentos industrializados");
     }
@@ -45,6 +53,7 @@ public class Clone extends Personagem {
         this.nome = nome;
     }
 
+<<<<<<< HEAD
     public float getVida(){
         return vida;
     }
@@ -61,6 +70,15 @@ public class Clone extends Personagem {
     }
 
 
+=======
+    public boolean getDemocracia(){
+        return democracia;
+    }
+    public void setDemocracia(boolean democracia){
+        this.democracia = democracia;
+    }
+
+>>>>>>> 577805467b5dfa71b1576476914bcf9eda935180
 }
 
 // Republicano (Personagem) ->Jedi, Clones, Droids

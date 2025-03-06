@@ -1,2 +1,2 @@
-# rpg_game_java
-A RPG game in Java!
+# Star Wars RPG!
+A RPG Star Wars in Java!
