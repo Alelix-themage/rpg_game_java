@@ -10,7 +10,6 @@ public class Sith extends Personagem{
         this.nome = "--";
         this.raca = "--";
         this.forca = 15;
-        this.vida = 100;
     }
 
     public Sith(String novoNome) {
