@@ -4,9 +4,11 @@ public class Clone extends Personagem {
 
     private String patente;
     private String nome;
-    private String democracia = "Imperio";
-    private int vida = 75;    
-
+   
+    
+    //Star Wars Episode III
+    private boolean democracia = true;
+    
     public void comer() {
 	System.out.println("gosta somente de alimentos industrializados");
     }
@@ -32,19 +34,11 @@ public class Clone extends Personagem {
         this.nome = nome;
     }
 
-    public String getDemocracia(){
+    public boolean getDemocracia(){
         return democracia;
     }
-    public void setDemocracia(String democracia){
+    public void setDemocracia(boolean democracia){
         this.democracia = democracia;
-    }
-
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-
-    public void getVida(){
-        System.out.println("Vida: " + vida);
     }
 
 }
