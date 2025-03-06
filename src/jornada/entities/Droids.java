@@ -1,6 +1,6 @@
 package jornada.entities;
 public class Droids extends Personagem {
-    private String pocaoMagica;
+
 
 
 
